@@ -1,0 +1,5 @@
+env           = "dev"
+account_alias = "demo"
+state_bucket  = "tf-state-demo-ap-south-1"
+lock_table    = "tf-locks"
+base_domain   = "demo-kops.local"
