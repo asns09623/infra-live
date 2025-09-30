@@ -1,5 +1,17 @@
-init: ; terraform init
-plan: ; terraform plan -var-file=terraform.tfvars
-apply: ; terraform apply -auto-approve -var-file=terraform.tfvars | tee apply.log
-outputs: ; terraform output -json | tee outputs.json
-destroy: ; terraform destroy -auto-approve -var-file=terraform.tfvars
+SHELL := /bin/bash
+TF   ?= terraform
+
+init:
+	$(TF) init
+
+plan:
+	$(TF) plan -out=plan.out
+
+apply:
+	$(TF) apply -auto-approve plan.out
+
+destroy:
+	$(TF) destroy -auto-approve
+
+outputs-json:
+	$(TF) output -json > tf-outputs.json

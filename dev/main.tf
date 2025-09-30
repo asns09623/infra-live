@@ -10,12 +10,10 @@ module "vpc" {
   availability_zones = var.availability_zones
 }
 module "dns" {
-  source = "git::https://github.com/asns09623/test-modules.git//dns?ref=v1.0.3"
+  source = "git::https://github.com/asns09623/test-modules.git//dns?ref=v1.0.6"
   env    = var.env
+  vpc_id = module.vpc.vpc_id
 }
-
-
-
 
 output "hosted_zone_id" {
   value = module.dns.hosted_zone_id
